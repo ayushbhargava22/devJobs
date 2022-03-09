@@ -1,25 +1,27 @@
 <template>
   <div class="card-container">
     <div class="card" v-for="data in getJobs" :key="data.id">
-      <div class="content-wrapper">
-        <div class="image">
-          <img v-bind:src="data.logo">
+      <router-link :to="{ name: 'Details', params: { jobid: data.id },}">
+        <div class="content-wrapper">
+          <div class="image">
+            <img v-bind:src="data.logo">
+          </div>
+          <div class="time flex">
+            <p class="posted-time"> {{data.postedAt}} </p>
+            <p class="seperator"></p>
+            <p class="contract"> {{data.contract}} </p>
+          </div>
+          <div class="position">
+            <h3 class="position-data"> {{data.position}} </h3>
+          </div>
+          <div class="company">
+            <p> {{data.company}} </p>
+          </div>
+          <div class="location">
+            <p>{{data.location}}</p>
+          </div>
         </div>
-        <div class="time flex">
-          <p class="posted-time"> {{data.postedAt}} </p>
-          <p class="seperator"></p>
-          <p class="contract"> {{data.contract}} </p>
-        </div>
-        <div class="position">
-          <h3 class="position-data"> {{data.position}} </h3>
-        </div>
-        <div class="company">
-          <p> {{data.company}} </p>
-        </div>
-        <div class="location">
-          <p>{{data.location}}</p>
-        </div>
-      </div>
+      </router-link>
     </div>
   </div>
 </template>
@@ -96,5 +98,8 @@ export default {
     color: blue;
     font-weight: bold;
     font-size: 0.9rem;
+  }
+  a {
+    text-decoration: none;
   }
 </style>
