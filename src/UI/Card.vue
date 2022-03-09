@@ -2,13 +2,16 @@
   <div class="card-container">
     <div class="card" v-for="data in getJobs" :key="data.id">
       <div class="content-wrapper">
+        <div class="image">
+          <img v-bind:src="data.logo">
+        </div>
         <div class="time flex">
           <p class="posted-time"> {{data.postedAt}} </p>
           <p class="seperator"></p>
           <p class="contract"> {{data.contract}} </p>
         </div>
         <div class="position">
-          <h3> {{data.position}} </h3>
+          <h3 class="position-data"> {{data.position}} </h3>
         </div>
         <div class="company">
           <p> {{data.company}} </p>
@@ -31,6 +34,17 @@ export default {
 </script>
 
 <style scoped>
+  .image {
+    position: relative;
+    background-color: rgb(234,147,16);
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.8rem;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    top: -25px;
+  }
   .card-container{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -50,7 +64,7 @@ export default {
     margin: 0 auto;
   }
   .time{
-    padding-top: 20px;
+    padding-top: 5px;
     color: grey;
     font-weight: bold;
     font-size: 0.81rem;
@@ -64,5 +78,23 @@ export default {
     background: grey;
     height: 2px;
     border-radius: 50%
+  }
+  .position {
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  .position-data {
+    font-weight: 700;
+    font-size: 1.2rem;
+  }
+  .company {
+    color: grey;
+    font-weight: bold;
+  }
+  .location {
+    margin-top: 40px;
+    color: blue;
+    font-weight: bold;
+    font-size: 0.9rem;
   }
 </style>
